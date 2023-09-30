@@ -72,13 +72,13 @@ public class MyArray {
 
 		return result;
 	}
+
 	// Input: 10 11 12 -1 14 10 17 19 20
 	// Output(k=3): 10 11 12 12 14 10 17 19 20
-
 	public int[] fillMissingValues(int k) {
 		int n = array.length;
 		List<Integer> missingValues = new ArrayList<>();
-		for (int i = 0; i <n; i++) {
+		for (int i = 0; i < n; i++) {
 			if (array[i] == -1) {
 				missingValues.add(i);
 			}
@@ -105,11 +105,10 @@ public class MyArray {
 					count++;
 				}
 			}
-			if(count>0) {
-			array[missingValue] = sum /  count;
+			if (count > 0) {
+				array[missingValue] = sum / count;
 			}
 		}
-
 		return array;
 	}
 
