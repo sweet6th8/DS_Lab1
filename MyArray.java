@@ -38,7 +38,6 @@ public class MyArray {
 		}
 
 		int[] result = new int[n - (count - 1)];
-//		System.out.println(result.length);
 		int index = 0;
 		for (int i = 0; i < n; i++) {
 			if (array[i] != 'a') {
@@ -49,9 +48,6 @@ public class MyArray {
 		return result;
 
 	}
-
-	// Input: 10 11 12 -1 14 10 17 19 20
-	// Output(k=3): 10 11 12 12 14 10 17 19 20
 
 	public int[] getMissingValues() {
 		int n = array.length;
@@ -78,8 +74,14 @@ public class MyArray {
 	public int[] fillMissingValues(int k) {
 		int n = array.length;
 		List<Integer> missingValues = new ArrayList<>();
+
+		if (k == 0) {
+			return array;
+		}
 		for (int i = 0; i < n; i++) {
+
 			if (array[i] == -1) {
+
 				missingValues.add(i);
 			}
 		}
@@ -103,20 +105,24 @@ public class MyArray {
 				if (array[j] != -1) {
 					sum += array[j];
 					count++;
+
 				}
 			}
+
 			if (count > 0) {
 				array[missingValue] = sum / count;
+
 			}
+
 		}
 		return array;
 	}
-
+	
 	public static void main(String[] args) {
 		MyArray myArray1 = new MyArray(new int[] { 1, 2, 3 });
 		MyArray myArray2 = new MyArray(new int[] { 1, 3, 5, 1, 3, 7, 9, 8 });
 		MyArray myArray3 = new MyArray(new int[] { 10, 11, 12, 13, 14, 17, 19, 20 });
-		MyArray myArray4 = new MyArray(new int[] { 1, 11, 1, 1, 14, 5, 1, -1, 1 });
+		MyArray myArray4 = new MyArray(new int[] { 1, 11, 1, 1, 14, 5, 3, -1 });
 		System.out.println(Arrays.toString(myArray1.mirror()));
 		System.out.println(Arrays.toString(myArray2.removeDuplicates()));
 		System.out.println(Arrays.toString(myArray3.getMissingValues()));

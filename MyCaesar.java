@@ -3,8 +3,10 @@ package BaiTapLop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 public class MyCaesar {
@@ -152,7 +154,7 @@ public class MyCaesar {
 	    }
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 
 //		MyCaesar myCaesar = new MyCaesar(3);
 //		System.out.println(myCaesar.encryptChar('Z'));
@@ -163,15 +165,8 @@ public class MyCaesar {
 //		System.out.println(myCaesar.decryptNum(8));
 //		System.out.println(myCaesar.scanner());
 		File f = new File("D:\\Cope_nam2\\DSA\\src\\BaiTapLop\\MyCaesar.java\\ReadFile.txt");
-		File f2 = new File("D:\\Cope_nam2\\DSA\\src\\BaiTapLop\\MyCaesar.java\\ReadFile.txt");
-//		try {
-//			List<String> allTexts = Files.readAllLines(f.toPath(), StandardCharsets.UTF_8);
-//			for (String line : allTexts) {
-//				System.out.println(line);
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-		decrypt(f.toPath().toString(), f2.toPath().toString());
+
+	
+		decrypt(f.toPath().toString());
 	}
 }
