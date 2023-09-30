@@ -1,16 +1,16 @@
 package BaiTapLop;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.List;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class MyCaesar {
 	public static final char[] ALPHABET = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
 			'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-	private int n;// shift steps (right shift)
+	private static int n;// shift steps (right shift)
 
 	public MyCaesar(int shiftSteps) {
 		this.n = shiftSteps;
@@ -53,17 +53,22 @@ public class MyCaesar {
 	// Decrypt a character according to the given shif steps.
 	// Decrypt: Dn(x) = (x – n) mod 26. x represents the index of c in
 	// the ALPHABET array
-	public char decryptChar(char c) {
+	public static char decryptChar(char c) {
 		int x = 0;
 		char result = 0;
 		for (int i = 0; i < ALPHABET.length; i++) {
 			x = i;
 
-			if (c == ALPHABET[i] && x - n >= 0) {
-				result = ALPHABET[(x - n) % 26];
-			} else if (c == ALPHABET[i] && x - n < 0) {
-				result = ALPHABET[(26 - Math.abs(x - n)) % 26];
+			try {
+				if (c == ALPHABET[i] && x - n >= 0) {
+					result = ALPHABET[(x - n) % 26];
+				} else if (c == ALPHABET[i] && x - n < 0) {
+					result = ALPHABET[(26 - Math.abs(x - n)) % 26];
 
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		return result;
@@ -72,7 +77,7 @@ public class MyCaesar {
 
 	// Decrypt a encrypted text using the above function for decrypting a
 	// charater.
-	public String decrypt(String input) {
+	public static String decrypt(String input) {
 		String output = "";
 		for (int i = 0; i < input.length(); i++) {
 			output += decryptChar(input.charAt(i));
@@ -103,6 +108,49 @@ public class MyCaesar {
 		
 		
 	}
+//	 public static void decrypt2(String srcFile, String desFile) {
+//	        try {
+//	            File myObj = new File(srcFile);
+//	            Scanner myReader = new Scanner(myObj);
+//	            StringBuilder data = new StringBuilder();
+//	            while (myReader.hasNextLine()) {
+//	                data.append(myReader.nextLine());
+//	                data.append("\n");
+//	            }
+//	            try {
+//	                Files.writeString(Paths.get(desFile), decrypt2(data.toString()));
+//	                System.out.println("done");
+//	            } catch (IOException e) {
+//	                throw new RuntimeException(e);
+//	            }
+//	            myReader.close();
+//	        } catch (FileNotFoundException e) {
+//	            System.out.println("You should have absolute path");
+//	            throw new RuntimeException(e);
+//	        }
+//	    }
+	 public static void decrypt(String srcFile, String desFile) {
+	        try {
+	            File myObj = new File(srcFile);
+	            Scanner myReader = new Scanner(myObj);
+	            StringBuilder data = new StringBuilder();
+	            while (myReader.hasNextLine()) {
+	                data.append(myReader.nextLine());
+	                data.append("\n");
+	            }
+	            try {
+	                Files.writeString(Paths.get(desFile), decrypt(data.toString()));
+	                System.out.println("done");
+	            } catch (IOException e) {
+	                throw new RuntimeException(e);
+	            }
+	            myReader.close();
+	        } catch (FileNotFoundException e) {
+	            System.out.println("You should have absolute path");
+	            throw new RuntimeException(e);
+	        }
+	    }
+
 
 	public static void main(String[] args) {
 
@@ -115,13 +163,15 @@ public class MyCaesar {
 //		System.out.println(myCaesar.decryptNum(8));
 //		System.out.println(myCaesar.scanner());
 		File f = new File("D:\\Cope_nam2\\DSA\\src\\BaiTapLop\\MyCaesar.java\\ReadFile.txt");
-		try {
-			List<String> allTexts = Files.readAllLines(f.toPath(), StandardCharsets.UTF_8);
-			for (String line : allTexts) {
-				System.out.println(line);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		File f2 = new File("D:\\Cope_nam2\\DSA\\src\\BaiTapLop\\MyCaesar.java\\ReadFile.txt");
+//		try {
+//			List<String> allTexts = Files.readAllLines(f.toPath(), StandardCharsets.UTF_8);
+//			for (String line : allTexts) {
+//				System.out.println(line);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		decrypt(f.toPath().toString(), f2.toPath().toString());
 	}
 }
