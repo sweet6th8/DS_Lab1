@@ -110,63 +110,19 @@ public class MyCaesar {
 		
 		
 	}
-//	 public static void decrypt2(String srcFile, String desFile) {
-//	        try {
-//	            File myObj = new File(srcFile);
-//	            Scanner myReader = new Scanner(myObj);
-//	            StringBuilder data = new StringBuilder();
-//	            while (myReader.hasNextLine()) {
-//	                data.append(myReader.nextLine());
-//	                data.append("\n");
-//	            }
-//	            try {
-//	                Files.writeString(Paths.get(desFile), decrypt2(data.toString()));
-//	                System.out.println("done");
-//	            } catch (IOException e) {
-//	                throw new RuntimeException(e);
-//	            }
-//	            myReader.close();
-//	        } catch (FileNotFoundException e) {
-//	            System.out.println("You should have absolute path");
-//	            throw new RuntimeException(e);
-//	        }
-//	    }
-	 public static void decrypt(String srcFile, String desFile) {
-	        try {
-	            File myObj = new File(srcFile);
-	            Scanner myReader = new Scanner(myObj);
-	            StringBuilder data = new StringBuilder();
-	            while (myReader.hasNextLine()) {
-	                data.append(myReader.nextLine());
-	                data.append("\n");
-	            }
-	            try {
-	                Files.writeString(Paths.get(desFile), decrypt(data.toString()));
-	                System.out.println("done");
-	            } catch (IOException e) {
-	                throw new RuntimeException(e);
-	            }
-	            myReader.close();
-	        } catch (FileNotFoundException e) {
-	            System.out.println("You should have absolute path");
-	            throw new RuntimeException(e);
-	        }
-	    }
 
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-//		MyCaesar myCaesar = new MyCaesar(3);
-//		System.out.println(myCaesar.encryptChar('Z'));
-//		System.out.println(myCaesar.decryptChar('L'));
-//		System.out.println(myCaesar.encrypt("LANG"));
-//		System.out.println(myCaesar.decrypt("LANG"));
-//		System.out.println(myCaesar.encryptNum(8));
-//		System.out.println(myCaesar.decryptNum(8));
-//		System.out.println(myCaesar.scanner());
-		File f = new File("D:\\Cope_nam2\\DSA\\src\\BaiTapLop\\MyCaesar.java\\ReadFile.txt");
+		MyCaesar myCaesar = new MyCaesar(3);
+		System.out.println(myCaesar.encryptChar('Z'));
+		System.out.println(myCaesar.decryptChar('L'));
+		System.out.println(myCaesar.encrypt("LANG"));
+		System.out.println(myCaesar.decrypt("LANG"));
+		System.out.println(myCaesar.encryptNum(8));
+		System.out.println(myCaesar.decryptNum(8));
+		System.out.println(myCaesar.scanner());
 
 	
-		decrypt(f.toPath().toString());
 	}
 }
