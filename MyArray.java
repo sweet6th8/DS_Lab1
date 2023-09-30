@@ -203,15 +203,15 @@ public class MyArray {
 	    }
 
 	public static void main(String[] args) {
-//		MyArray myArray1 = new MyArray(new int[] { 1, 2, 3 });
-//		MyArray myArray2 = new MyArray(new int[] { 1, 3, 5, 1, 3, 7, 9, 8 });
-//		MyArray myArray3 = new MyArray(new int[] { 10, 11, 12, 13, 14, 17, 19, 20 });
+		MyArray myArray1 = new MyArray(new int[] { 1, 2, 3 });
+		MyArray myArray2 = new MyArray(new int[] { 1, 3, 5, 1, 3, 7, 9, 8 });
+		MyArray myArray3 = new MyArray(new int[] { 10, 11, 12, 13, 14, 17, 19, 20 });
 		MyArray myArray4 = new MyArray(new int[] { 1, 11, 1, 1, 14, 10, 1, -1, 1 });
-//		System.out.println(Arrays.toString(myArray1.mirror()));
-//		System.out.println(Arrays.toString(myArray2.removeDuplicates()));
-//		System.out.println(Arrays.toString(myArray3.getMissingValues()));
+		System.out.println(Arrays.toString(myArray1.mirror()));
+		System.out.println(Arrays.toString(myArray2.removeDuplicates()));
+		System.out.println(Arrays.toString(myArray3.getMissingValues()));
 		System.out.println(Arrays.toString(myArray4.fillMissingValues(5)));
-//		System.out.println(Arrays.toString(myArray4.fillMissingValues2(5)));
+		System.out.println(Arrays.toString(myArray4.fillMissingValues2(5)));
 
 	}
 }
