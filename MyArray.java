@@ -78,6 +78,7 @@ public class MyArray {
 		if (k == 0) {
 			return array;
 		}
+		
 		for (int i = 0; i < n; i++) {
 
 			if (array[i] == -1) {
@@ -104,29 +105,32 @@ public class MyArray {
 			for (int j = left; j <= right; j++) {
 				if (array[j] != -1) {
 					sum += array[j];
-					count++;
 
 				}
 			}
 
-			if (count > 0) {
-				array[missingValue] = sum / count;
+			if (k == 1) {
+				array[missingValue] = Math.min(array[left], array[right]);
+			}
+
+			if (k > 1) {
+				array[missingValue] = sum / k;
 
 			}
 
 		}
 		return array;
 	}
-	
+
 	public static void main(String[] args) {
 		MyArray myArray1 = new MyArray(new int[] { 1, 2, 3 });
 		MyArray myArray2 = new MyArray(new int[] { 1, 3, 5, 1, 3, 7, 9, 8 });
 		MyArray myArray3 = new MyArray(new int[] { 10, 11, 12, 13, 14, 17, 19, 20 });
-		MyArray myArray4 = new MyArray(new int[] { 1, 11, 1, 1, 14, 5, 3, -1 });
+		MyArray myArray4 = new MyArray(new int[] { 10, 11, 12, -1, 14, 10, 17, 19, 20 });
 		System.out.println(Arrays.toString(myArray1.mirror()));
 		System.out.println(Arrays.toString(myArray2.removeDuplicates()));
 		System.out.println(Arrays.toString(myArray3.getMissingValues()));
-		System.out.println(Arrays.toString(myArray4.fillMissingValues(0)));
+		System.out.println(Arrays.toString(myArray4.fillMissingValues(3)));
 
 	}
 }

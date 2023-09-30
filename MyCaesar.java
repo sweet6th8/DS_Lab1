@@ -1,12 +1,9 @@
 package BaiTapLop;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class MyCaesar {
@@ -99,18 +96,29 @@ public class MyCaesar {
 				result += encryptChar(s.charAt(i));
 			} else if (Character.isDigit(s.charAt(i))) {
 				result += encryptNum(s.charAt(i));
-			}else {
-				result+=s.charAt(i);
+			} else {
+				result += s.charAt(i);
 			}
 		}
 		return result;
 	}
-	public static void readFile() {
-		
-		
-		
-	}
 
+	// advanced
+//	public void encrypt2(String srcFile) throws FileNotFoundException {
+//		BufferedReader reader = new BufferedReader(new FileReader(srcFile));
+//
+//		try {
+//			String line = reader.readLine();
+//			while (line != null) {
+//				System.out.println(line);
+//				line = reader.readLine();
+//				encrypt(line);
+//			}
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//			e.printStackTrace();
+//		}
+//	}
 
 	public static void main(String[] args) throws FileNotFoundException {
 
@@ -123,6 +131,5 @@ public class MyCaesar {
 		System.out.println(myCaesar.decryptNum(8));
 		System.out.println(myCaesar.scanner());
 
-	
 	}
 }
